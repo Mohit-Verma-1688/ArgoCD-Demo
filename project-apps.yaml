@@ -1,0 +1,61 @@
+--
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: applications-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for parent applicatons used when employing app of apps pattern
+  sourceRepos:
+  - git@github.com:Mohit-Verma-1688/ArgoCD-Demo.git
+  - https://charts.jetstack.io
+  - https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  - group: 'rbac.authorization.k8s.io'
+    kind: '*'
+  # Allow this project to deploy only to 'argocd' namespace
+  #
+  destinations:
+  - namespace: argocd
+    server: https://kubernetes.default.svc 
+  - namespace: monitoring
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com 
+  - namespace: ingress-nginx
+    server: https://kubernetes.default.svc
+  - namespace: cert-manager
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
+  - namespace: demo-webapp
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
+  - namespace: kube-system
+    server: https://31574EDDB2731071DBC51AB925ED3A12.gr7.us-east-1.eks.amazonaws.com
+  #
+  # Deny all namespace-scoped resources from being created, except for Application
+  clusterResourceWhitelist:
+  - group: 'argoproj.io'
+    kind: Application
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+  - group: 'policy'
+    kind: PodSecurityPolicy
+  - group: 'apiextensions.k8s.io'
+    kind: CustomResourceDefinition
+  - group: 'rbac.authorization.k8s.io'
+    kind: Role
+  - group: 'rbac.authorization.k8s.io'
+    kind: RoleBinding
+  - group: 'networking.k8s.io'
+    kind: IngressClass
+  - group: 'admissionregistration.k8s.io'
+    kind: ValidatingWebhookConfiguration
+  - group: 'admissionregistration.k8s.io'
+    kind: MutatingWebhookConfiguration
+  - group: 'cert-manager.io'
+    kind: '*'

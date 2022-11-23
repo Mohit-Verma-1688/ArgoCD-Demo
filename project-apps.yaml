@@ -9,6 +9,7 @@ metadata:
 spec:
   description: Project for parent applicatons used when employing app of apps pattern
   sourceRepos:
+  - https://charts.bitnami.com/bitnami
   - git@github.com:Mohit-Verma-1688/ArgoCD-Demo.git
   - https://charts.jetstack.io
   - https://raw.githubusercontent.com/Mohit-Verma-1688/helm_repo/master/

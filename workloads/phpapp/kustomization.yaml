@@ -4,7 +4,6 @@ namespace: demo-webapp
 resources:
   - service.yaml
   - deployment.yaml
-  - pvc.yaml
   - ingress.yaml
   - configmap.yaml
   - namespace.yaml

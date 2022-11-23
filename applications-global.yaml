@@ -12,11 +12,6 @@ spec:
     repoURL: git@github.com:Mohit-Verma-1688/ArgoCD-Demo.git
     targetRevision: HEAD
     path: argo-apps
-    helm:
-      values: |
-        spec:
-          destination:
-            server: https://kubernetes.default.svc
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

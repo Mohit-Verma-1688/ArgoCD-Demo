@@ -7,7 +7,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io    
 spec:
-  project: applications-project-mon1
+  project: applications-apps
   source:
     repoURL: git@github.com:Mohit-Verma-1688/ArgoCD-Demo.git 
     targetRevision: HEAD

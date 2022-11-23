@@ -14,6 +14,7 @@ spec:
     path: workloads/ingress
   destination:
     server: {{ .Values.spec.destination.server }}
+    namespace: nginx-ingress
   syncPolicy:
     automated:
       prune: true    

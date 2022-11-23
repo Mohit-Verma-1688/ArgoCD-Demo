@@ -20,6 +20,8 @@ spec:
     kind: '*'
   # Allow this project to deploy only to 'argocd' namespace
   destinations:
+  - namespace: default
+    server: https://kubernetes.default.svc
   - namespace: metallb-system
     server: https://kubernetes.default.svc
   - namespace: metallb-system
